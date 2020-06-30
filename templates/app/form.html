@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +5,7 @@
     <title>Title</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
-    <script type="text/javascript" src="{% static '/js/function.js' %}"></script>
-    
+
 </head>
 <body>
 <h1>this is my page</h1>
@@ -16,18 +14,17 @@
 
 <form>
     Name  <br> <input type="text" name="name" id="nm" ><br>
-    Math <br> <input type="number" name="math" id="mt" onclick="average();"><br>
+    Math <br> <input type="number" name="math" id="mt"><br>
     Eng  <br> <input type="number" name="eng" id="eg" > <br>
     Phy  <br> <input type="number" name="phy" id="ph" > <br>
 
-    Avg  <br> <input type="number" name="avg" id="ag"  onclick="average();"  > <br>
+    Avg  <br> <input type="number" name="avg" id="ag"  onclick="average();" readonly > <br>
 
     <input type="submit" >
 </form>
 
 </div>
 
-
-
+    <script  src="../../static/js/function.js"></script>
 </body>
 </html>
