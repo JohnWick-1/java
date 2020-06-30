@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+    <script type="text/javascript" src="{% static '/js/function.js' %}"></script>
+    
+</head>
+<body>
+<h1>this is my page</h1>
+<h2>this is my page</h2>
+<div>
+
+<form>
+    Name  <br> <input type="text" name="name" id="nm" ><br>
+    Math <br> <input type="number" name="math" id="mt" onclick="average();"><br>
+    Eng  <br> <input type="number" name="eng" id="eg" > <br>
+    Phy  <br> <input type="number" name="phy" id="ph" > <br>
+
+    Avg  <br> <input type="number" name="avg" id="ag"  onclick="average();"  > <br>
+
+    <input type="submit" >
+</form>
+
+</div>
+
+
+
+</body>
+</html>
