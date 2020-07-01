@@ -9,16 +9,22 @@
 </head>
 <body>
 <h1>this is my page</h1>
-<h2>this is my page</h2>
+<h2> {{ msg }} </h2>
 <div>
 
-<form>
+<!--<form action="{% url 'saveStud' %}" method="post">-->
+<form action="/app/save/" method="post">
+    {%csrf_token%}
     Name  <br> <input type="text" name="name" id="nm" ><br>
     Math <br> <input type="number" name="math" id="mt"><br>
     Eng  <br> <input type="number" name="eng" id="eg" > <br>
     Phy  <br> <input type="number" name="phy" id="ph" > <br>
 
-    Avg  <br> <input type="number" name="avg" id="ag"  onclick="average();" readonly > <br>
+    Avg  <br> <input type="number" name="avg" id="ag"  onclick="average();" readonly > <br><br>
+
+    Image <input type="file" name="image" id="im" ><br>
+    File <input type="file" name="file" id="fl" ><br>
+
 
     <input type="submit" >
 </form>
