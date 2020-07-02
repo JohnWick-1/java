@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+
 </head>
 <body>
-$END$
+<h1>this is my page in Form</h1>
+<h2> {{ msg }} </h2>
+<div>
+
+<!--<form action="{% url 'saveform' %}" method="post">-->
+<form action="/app/saveForm/" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {{ studform.as_p }}<br><br><br>
+    {{ studDataform.as_p }}
+
+    <input type="submit" >
+</form>
+
+</div>
+
+    <script  src="../../static/js/function.js"></script>
 </body>
 </html>
