@@ -62,24 +62,48 @@ def saveForm(request):
     print('count in saveForm = ', count)
     print('here--saveForm-----------')
     context = {'msg':'Data not saved'}
-    # print(request.__dict__)
+    print(request.__dict__)
     if request.method == 'POST' and request.FILES:
         print('inside if ---save form----')
         context = {'msg': 'Data has saved'}
-        print(request.POST['name'])
-        print(request.POST['math'])
-        print(request.POST['eng'])
-        print(request.POST['phy'])
-        print(request.POST['avg'])
-        # print(request.POST[''])
-        stud_form = StudentForm(request.POST, request.FILES)
+        # print(request.POST['name'])
+        # print(request.POST['math'])
+        # print(request.POST['eng'])
+        # print(request.POST['phy'])
+        # print(request.POST['avg'])
+        # print(request.FILES['image'])
+        # print(request.FILES['document'])
+        # print(request.FILES['photo'])
+
+        stud_form = StudentForm(request.POST, request.FILES,instance=Student())
+
+        print(22 * '*')
         if stud_form.is_valid():
             print('student valid')
-            stud_form.save(commit=False)
-        studData_form = StudentDataForm(stud_form, request.POST, request.FILES)
+            # stud_form.save()
+            print(stud_form.__dict__)
+            print('_'*40)
+            print(stud_form.instance)
+            print(id(stud_form))
+            if isinstance(stud_form, Student):
+                print("stud_form is my object")
+            print('@'*40)
+        studData_form = StudentDataForm(request.POST, request.FILES,instance=StudentData())
         if studData_form.is_valid():
             print('image valid')
-            print(studData_form.__dict__)
-            studData_form.save()
+            x = studData_form.save(commit=False)
+            # x.student = stud_form
+            # x.student = StudentForm(request.POST, request.FILES,instance=Student())
+            stud = Student(name=request.POST['name'],
+                           math=request.POST['math'],
+                           eng=request.POST['eng'],
+                           phy=request.POST['phy'],
+                           avg=request.POST['avg'],
+                           img=request.FILES['img'],
+                           doc=request.FILES['doc'])
+            stud.save()
+            x.student = stud
+            print(x.__dict__)
+            x.save()
     return redirect(reverse('showform'))
 
